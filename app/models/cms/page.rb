@@ -132,7 +132,8 @@ class Cms::Page < Cms::Base
 
   # Full url for a page
   def url
-    "http://" + "#{self.site.hostname}/#{self.site.path}/#{self.full_path}".squeeze("/")
+    page_path = self.redirect_to_path.blank? ? self.full_path : Rails.application.routes.url_helpers.public_send(self.redirect_to_path)
+    "http://" + "#{self.site.hostname}/#{self.site.path}/#{page_path}".squeeze("/")
   end
 
   # Method to collect prevous state of blocks for revisions
