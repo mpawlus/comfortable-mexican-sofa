@@ -31,6 +31,7 @@
 = render :partial => 'form_blocks'
 
 = form.check_box :is_published, :label => t('.is_published')
+= form.check_box :show_in_nav, :label => t('.show_in_nav')
 
 .form-actions
   = form.submit t('.preview'), :name => 'preview', :id => nil, :class => 'btn'

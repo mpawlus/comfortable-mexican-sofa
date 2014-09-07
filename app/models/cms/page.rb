@@ -8,6 +8,7 @@ class Cms::Page < Cms::Base
                   :parent, :parent_id,
                   :blocks_attributes,
                   :is_published,
+                  :show_in_nav,
                   :target_page_id,
                   :redirect_to_path,
                   :category_ids
@@ -56,6 +57,7 @@ class Cms::Page < Cms::Base
   # -- Scopes ---------------------------------------------------------------
   default_scope order('cms_pages.position')
   scope :published, where(:is_published => true)
+  scope :show_in_navigation, where(:show_in_nav => true)
 
   # -- Class Methods --------------------------------------------------------
   # Tree-like structure for pages
